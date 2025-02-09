@@ -29,7 +29,7 @@ const platforms = [
     { x: 300, y: 400, width: 100, height: 20 },
     { x: 375, y: 300, width: 75, height: 20 },
     { x: 475, y: 200, width: 100, height: 30 },
-    { x: 600, y: 300, width: 100, height: 20 },
+    { x: 50, y: 100, width: 60, height: 20 },
 ];
 const ground = {
     bottom: { x: 0, y: canvas.height - 20, width: canvas.width, height: 20 }
@@ -54,8 +54,8 @@ function drawPlatforms() {
 const goalImage = new Image();
 goalImage.src = 'images/goal.png';
 const goal = {
-    x: 600,
-    y: 250,
+    x: 50,
+    y: 50,
     width: 50,
     height: 50,
 };
@@ -76,7 +76,11 @@ function drawEvil() {
 }
 
 const mud = {
-
+    x: 100,
+    y: 50,
+    width: 100,
+    height: 20,
+    color: '#654321',
 };
 function drawMud() {
     ctx.fillStyle = mud.color;
@@ -170,7 +174,7 @@ function update() {
 
     if (collision(rock, goal)) {
         alert('You win!');
-        window.location.href = 'thirdlevel.html';
+        window.location.href = 'fourthlevel.html';
     }//moves to next level
 
     if (collision(rock, evil)) {

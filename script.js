@@ -22,7 +22,7 @@ function drawRock() {
     ctx.drawImage(rockImage, -rock.radius, -rock.radius, rock.radius * 2, rock.radius * 2);
     ctx.restore();
 }
-
+//make rock
 
 const platforms = [
     { x: 100, y: 500, width: 200, height: 20 },
@@ -49,7 +49,7 @@ function drawPlatforms() {
     ctx.fillRect(bottom.x, bottom.y, bottom.width, bottom.height / 2);
     ctx.fillStyle = 'brown';
     ctx.fillRect(bottom.x, bottom.y + bottom.height / 2, bottom.width, bottom.height / 2);
-}
+}//make platform
 
 const goalImage = new Image();
 goalImage.src = 'images/goal.png';
@@ -61,7 +61,7 @@ const goal = {
 };
 function drawGoal() {
     ctx.drawImage(goalImage, goal.x, goal.y, goal.width, goal.height);
-}
+}//make goal
 
 const evilImage = new Image();
 evilImage.src = 'images/lava.png';
@@ -78,7 +78,7 @@ const mud = {
 function drawMud() {
     ctx.fillStyle = mud.color;
     ctx.fillRect(mud.x, mud.y, mud.width, mud.height);
-}
+}//makes the varibles
 
 const backgroundImage = new Image();
 backgroundImage.src = 'images/background.jpg';
@@ -114,7 +114,7 @@ function update() {
         rock.grounded = true;
     } else {
         rock.grounded = false;
-    }
+    }//applies gravity
 
     rock.velocityX *= rock.friction;
     rock.x += rock.velocityX;
@@ -125,7 +125,7 @@ function update() {
     } else if (rock.x - rock.radius < 0) {
         rock.x = rock.radius;
         rock.velocityX = 0;
-    }
+    }//applies better movement
 
     function collision(rock, bottomObstacle) {
         if (rock.x - rock.radius < bottomObstacle.x + bottomObstacle.width &&
@@ -134,7 +134,7 @@ function update() {
             rock.y + rock.radius > bottomObstacle.y) {
             return true;
         }
-    }
+    }//checks collision with objects
     function life(rock, object) {
         if (rock.y + rock.radius > object.y && rock.y < object.y) {
             rock.y = object.y - rock.radius;
@@ -152,7 +152,7 @@ function update() {
                 rock.velocityX = 0;
             }
         }
-    }
+    }//determines outcomes of collision for object platforms
 
 
     platforms.forEach(platform => {
@@ -168,7 +168,7 @@ function update() {
     if (collision(rock, goal)) {
         alert('You win!');
         window.location.href = 'secondlevel.html';
-    }
+    }//moves to next level
 
     if (collision(rock, evil)) {
         rock.x = 50;
@@ -188,7 +188,7 @@ function update() {
     if (keys['ArrowRight']) {
         rock.velocityX = rock.speed;
         rock.rotation += 0.4;
-    }
+    } //offers continous movement
 
     requestAnimationFrame(update);
 }
@@ -206,7 +206,7 @@ function movePlayer(event) {
             rock.grounded = false;
             jumphold = null;
         }
-    }
+    }//gives varible jump height based on holding space
 }
 
 document.addEventListener('keydown', movePlayer);
@@ -220,6 +220,6 @@ function updateTimer() {
     timerElement.textContent = `${timeSpent}s`;
 }
 
-setInterval(updateTimer, 1000);
+setInterval(updateTimer, 1000);//sets timer
 
 update();

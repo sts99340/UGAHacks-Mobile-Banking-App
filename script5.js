@@ -5,7 +5,7 @@ rockImage.src = 'images/rock_object.png';
 const rock = {
     radius: 25,
     x: 0,
-    y: 0,
+    y: 500,
     speed: 5,
     jump: 20,
     velocityY: 0,
@@ -25,11 +25,11 @@ function drawRock() {
 //make rock
 
 const platforms = [
-    { x: 100, y: 500, width: 200, height: 20 },
     { x: 300, y: 400, width: 100, height: 20 },
-    { x: 375, y: 300, width: 75, height: 20 },
-    { x: 475, y: 200, width: 100, height: 30 },
-    { x: 600, y: 300, width: 100, height: 20 },
+    { x: 50, y: 100, width: 60, height: 20 },
+    { x: 700, y: 300, width: 100, height: 20 },
+    { x: 400, y: 100, width: 155, height: 20 },
+    { x: 0, y: 200, width: 100, height: 20 },
 ];
 const ground = {
     bottom: { x: 0, y: canvas.height - 20, width: canvas.width, height: 20 }
@@ -54,8 +54,8 @@ function drawPlatforms() {
 const goalImage = new Image();
 goalImage.src = 'images/goal.png';
 const goal = {
-    x: 600,
-    y: 250,
+    x: 50,
+    y: 50,
     width: 50,
     height: 50,
 };
@@ -65,22 +65,27 @@ function drawGoal() {
 
 const evilImage = new Image();
 evilImage.src = 'images/lava.png';
-const evil = {
-    x: 475,
-    y: 182,
-    width: 100,
-    height: 25.15,
-};
+const evils = [
+    {x: 340, y: 560, width: 350, height: 25.15,},
+    {x: 300, y: 300, width: 100, height: 20,},
+    {x: 100, y: 30, width: 150, height: 20,},
+];
 function drawEvil() {
-    ctx.drawImage(evilImage, evil.x, evil.y, evil.width, evil.height);
+    evils.forEach(evil => {
+        ctx.drawImage(evilImage, evil.x, evil.y, evil.width, evil.height);
+    } );
 }
 
-const mud = {
-
-};
+const muds = [
+    {x: 400, y: 400, width: 100, height: 20,},
+    {x: 520, y: 200, width: 100, height: 20,},
+    {x: 115, y: 100, width: 200, height: 20,},
+];
 function drawMud() {
-    ctx.fillStyle = mud.color;
-    ctx.fillRect(mud.x, mud.y, mud.width, mud.height);
+    muds.forEach(mud => {
+        ctx.fillStyle = '#654321';
+        ctx.fillRect(mud.x, mud.y, mud.width, mud.height);
+    } );
 }//makes the varibles
 
 const backgroundImage = new Image();
@@ -170,19 +175,23 @@ function update() {
 
     if (collision(rock, goal)) {
         alert('You win!');
-        window.location.href = 'thirdlevel.html';
+        window.location.href = 'fifthlevel.html';
     }//moves to next level
 
-    if (collision(rock, evil)) {
-        rock.x = 50;
-        rock.y = 50;
-        rock.velocityX = 0;
-        rock.velocityY = 0;
-    }
-    if (collision(rock, mud)) {
-        rock.velocityY = 0.4;
-        rock.grounded = false;
-    }
+    evils.forEach(evil => {
+        if (collision(rock, evil)) {
+            rock.x = 0;
+            rock.y = 500;
+            rock.velocityY = 0;
+            rock.velocityX = 0;
+        }
+    });
+    muds.forEach(mud => {
+        if (collision(rock, mud)) {
+            rock.velocityY = 0.4;
+            rock.grounded = false;
+        }
+    });
 
     if (keys['ArrowLeft']) {
         rock.velocityX = -rock.speed;
