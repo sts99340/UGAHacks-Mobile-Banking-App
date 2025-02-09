@@ -5,7 +5,7 @@ rockImage.src = 'images/rock_object.png';
 const rock = {
     radius: 25,
     x: 0,
-    y: 0,
+    y: 500,
     speed: 5,
     jump: 20,
     velocityY: 0,
