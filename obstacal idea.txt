@@ -1,0 +1,6 @@
+object with slow fade
+if (player.x < obstacle.x) {
+                    player.x = obstacle.x - player.radius;
+                } else {
+                    player.x = obstacle.x + obstacle.width + player.radius;
+                }

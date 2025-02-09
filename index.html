@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocker</title>
 </head>
 <body>
     <h1>Rocker</h1>
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <div class="main">
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <div class="words">
+            <div class="timer">Time: <span id="timer">0</span></div>
+            <div class="instructions">
+                <h2>Instructions</h2>
+                <p>Use the arrow keys to move the rocker left and right. The goal is to collect as many stars as possible before the timer runs out.</p>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
+    </div>
 </body>
 </html>
