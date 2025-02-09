@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chip</title>
 </head>
 <body>
-    <h1>Second Level</h1>
-    <canvas id="canvas" width="800" height="600"></canvas>
+    <h1>Chip's Adventure</h1>
+    <div class="main">
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <div class="words">
+            <h3>Level 1</h3>
+            <hr>
+            <div class="instructions">
+                <h2>Instructions</h2>
+                <p>Using the space bar to jump and arrow keys to move left and right navigate chip to the goal.</p>
+                <p>Avoid the lava and mud slows you down</p>
+            </div>
+            <hr>
+            <div class="timer">Time: <span id="timer">0</span></div>
+        </div>
+    </div>
     <script src="script2.js"></script>
+    </div>
 </body>
 </html>

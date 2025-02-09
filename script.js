@@ -212,4 +212,14 @@ function movePlayer(event) {
 document.addEventListener('keydown', movePlayer);
 document.addEventListener('keyup', movePlayer);
 
+let timeSpent = 0;
+const timerElement = document.getElementById('timer');
+
+function updateTimer() {
+    timeSpent++;
+    timerElement.textContent = `${timeSpent}s`;
+}
+
+setInterval(updateTimer, 1000);
+
 update();
